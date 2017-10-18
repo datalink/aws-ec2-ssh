@@ -40,7 +40,7 @@ ASSUME_ROLE=""
 USERADD_PROGRAM=""
 USERADD_ARGS=""
 
-while getopts :hva:i:l:s: opt
+while getopts :hva:i:l:s:u: opt
 do
     case $opt in
         h)
