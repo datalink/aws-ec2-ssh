@@ -128,9 +128,9 @@ else
 fi
 
 if grep -q '#AuthorizedKeysCommandUser nobody' $SSHD_CONFIG_FILE; then
-    sed -i "s:#AuthorizedKeysCommandUser nobody:AuthorizedKeysCommandUser nobody:g" $SSHD_CONFIG_FILE
+    sed -i "s:#AuthorizedKeysCommandUser nobody:AuthorizedKeysCommandUser ubuntu:g" $SSHD_CONFIG_FILE
 else
-    echo "AuthorizedKeysCommandUser nobody" >> $SSHD_CONFIG_FILE
+    echo "AuthorizedKeysCommandUser ubuntu" >> $SSHD_CONFIG_FILE
 fi
 
 cat > /etc/cron.d/import_users << EOF
