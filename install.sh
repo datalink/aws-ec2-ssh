@@ -40,6 +40,9 @@ ASSUME_ROLE=""
 USERADD_PROGRAM=""
 USERADD_ARGS=""
 
+# The process will run as this user when authenticating via sshd
+AUTH_USER="sshdauth"
+
 while getopts :hva:i:l:s:u: opt
 do
     case $opt in
@@ -128,9 +131,9 @@ else
 fi
 
 if grep -q '#AuthorizedKeysCommandUser nobody' $SSHD_CONFIG_FILE; then
-    sed -i "s:#AuthorizedKeysCommandUser nobody:AuthorizedKeysCommandUser ubuntu:g" $SSHD_CONFIG_FILE
+    sed -i "s:#AuthorizedKeysCommandUser nobody:AuthorizedKeysCommandUser $AUTHUSER:g" $SSHD_CONFIG_FILE
 else
-    echo "AuthorizedKeysCommandUser ubuntu" >> $SSHD_CONFIG_FILE
+    echo "AuthorizedKeysCommandUser $AUTHUSER" >> $SSHD_CONFIG_FILE
 fi
 
 cat > /etc/cron.d/import_users << EOF
