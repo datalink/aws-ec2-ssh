@@ -41,7 +41,7 @@ USERADD_PROGRAM=""
 USERADD_ARGS=""
 
 # The process will run as this user when authenticating via sshd
-AUTH_USER="sshdauth"
+AUTHUSER="sshdauth"
 
 while getopts :hva:i:l:s:u: opt
 do
@@ -87,7 +87,7 @@ tmpdir=$(mktemp -d)
 
 cd "$tmpdir"
 
-git clone -b master https://github.com/widdix/aws-ec2-ssh.git
+git clone -b master https://github.com/datalink/aws-ec2-ssh.git
 
 cd "$tmpdir/aws-ec2-ssh"
 
